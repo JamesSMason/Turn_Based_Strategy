@@ -6,7 +6,21 @@ public class UnitActionSystem : MonoBehaviour
     [SerializeField] private Unit selectedUnit;
     [SerializeField] private LayerMask unitsLayerMask;
 
+    public static UnitActionSystem Instance { get; private set; }
+
     public event EventHandler OnSelectedUnitChanged;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.Log($"There are multiple UnitActionSystem objects in this scene.");
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     private void Update()
     {

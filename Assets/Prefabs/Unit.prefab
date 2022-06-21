@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 5506684081655419493}
   - component: {fileID: 5506684081655419514}
   - component: {fileID: 3638458040547999213}
+  - component: {fileID: 6942371117857745677}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -144,10 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f056cd3c63c04b149be2e78221732a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitAnimator: {fileID: 5566420698909810884}
-  movementSpeed: 4
-  stoppingDistance: 0.1
-  rotateSpeed: 10
 --- !u!65 &3638458040547999213
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -161,6 +158,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4563535, y: 1.7918812, z: 0.39912766}
   m_Center: {x: 0.002861172, y: 0.8938064, z: -0.014306337}
+--- !u!114 &6942371117857745677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506684081655419495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0a056f14f288b4fa8b9b16764773b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitAnimator: {fileID: 5566420698909810884}
+  movementSpeed: 4
+  stoppingDistance: 0.1
+  rotateSpeed: 10
 --- !u!1001 &5506684082207051420
 PrefabInstance:
   m_ObjectHideFlags: 0

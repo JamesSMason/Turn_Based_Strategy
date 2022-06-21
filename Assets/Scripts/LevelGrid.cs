@@ -13,7 +13,7 @@ public class LevelGrid : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.Log($"There are multiple UnitActionSystem objects in this scene.");
+            Debug.Log($"There are multiple LevelGrid objects in this scene.");
             Destroy(gameObject);
             return;
         }
@@ -60,4 +60,8 @@ public class LevelGrid : MonoBehaviour
     public Vector3 GetWorldPosition(GridPosition gridPosition) => gridSystem.GetWorldPosition(gridPosition);
 
     public bool IsValidGridPosition(GridPosition gridPosition) => gridSystem.IsValidGridPosition(gridPosition);
+
+    public int GetWidth() => gridSystem.GetWidth();
+
+    public int GetHeight() => gridSystem.GetHeight();
 }

@@ -727,7 +727,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7768924, y: 1}
+    m_SensorSize: {x: 1.7786885, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -903,6 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1abddab35b9cb4e8ca28b4c562abe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit: {fileID: 858182800}
 --- !u!1 &963783328
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UnitActionSystem : MonoBehaviour
 {
@@ -38,6 +39,11 @@ public class UnitActionSystem : MonoBehaviour
             return; 
         }
 
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (TryHandleUnitSelection()) 
         { 
             return; 
@@ -65,12 +71,30 @@ public class UnitActionSystem : MonoBehaviour
             {
                 if (raycastHit.transform.TryGetComponent<Unit>(out Unit unit))
                 {
+                    if (unit == selectedUnit)
+                    {
+                        return false;
+                    }
                     SetSelectedUnit(unit);
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    private void HandleSelectedAction()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetPosition());
+
+            if (selectedAction.IsValidActionGridPosition(mouseGridPosition))
+            {
+                SetBusy();
+                selectedAction.TakeAction(mouseGridPosition, ClearBusy);
+            }
+        }
     }
 
     private void SetSelectedUnit(Unit unit)
@@ -85,35 +109,13 @@ public class UnitActionSystem : MonoBehaviour
         selectedAction = baseAction;
     }
 
-    private void HandleSelectedAction()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetPosition());
-
-            switch (selectedAction)
-            {
-                case MoveAction moveAction:
-                    if (moveAction.IsValidActionGridPosition(mouseGridPosition))
-                    {
-                        SetBusy();
-                        moveAction.Move(mouseGridPosition, ClearBusy);
-                    }
-
-                    break;
-
-                case SpinAction spinAction:
-
-                    SetBusy();
-                    spinAction.Spin(ClearBusy);
-
-                    break;
-            }
-        }
-    }
-
     public Unit GetSelectedUnit()
     {
         return selectedUnit;
+    }
+
+    public BaseAction GetSelectedAction()
+    {
+        return selectedAction;
     }
 }

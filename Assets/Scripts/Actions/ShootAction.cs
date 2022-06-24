@@ -22,6 +22,8 @@ public class ShootAction : BaseAction
     private Unit targetUnit;
     private bool canShootBullet;
 
+    public event EventHandler OnShootStart;
+
     private void Update()
     {
         if (!isActive) 
@@ -74,6 +76,7 @@ public class ShootAction : BaseAction
 
     private void Shoot()
     {
+        OnShootStart(this, EventArgs.Empty);
         targetUnit.Damage();
     }
 

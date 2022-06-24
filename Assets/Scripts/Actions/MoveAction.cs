@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class MoveAction : BaseAction
 {
-    [Header("Component References")]
-    [SerializeField] Animator unitAnimator = null;
-
     [Header("Movement Variables")]
     [SerializeField] private float movementSpeed = 4f;
     [SerializeField] private float stoppingDistance = 0.1f;
@@ -14,6 +11,9 @@ public class MoveAction : BaseAction
     [SerializeField] private int maxMoveDistance = 4;
 
     private Vector3 targetPosition;
+
+    public event EventHandler OnStartMoving;
+    public event EventHandler OnStopMoving;
 
     protected override void Awake()
     {
@@ -30,12 +30,10 @@ public class MoveAction : BaseAction
         if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
         {
             transform.position += moveDirection * movementSpeed * Time.deltaTime;
-
-            unitAnimator.SetBool("IsWalking", true);
         }
         else
         {
-            unitAnimator.SetBool("IsWalking", false);
+            OnStopMoving?.Invoke(this, EventArgs.Empty);
             ActionComplete();
         }
 
@@ -46,6 +44,7 @@ public class MoveAction : BaseAction
     {
         ActionStart(onActionComplete);
         this.targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+        OnStartMoving?.Invoke(this, EventArgs.Empty);
     }
 
     public override List<GridPosition> GetValidActionGridPosition()

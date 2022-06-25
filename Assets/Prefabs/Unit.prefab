@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 6942371117857745677}
   - component: {fileID: 4014046320573414097}
   - component: {fileID: -1205020529043959415}
+  - component: {fileID: -3932571535976409158}
   - component: {fileID: 1883890832157547831}
   m_Layer: 7
   m_Name: Unit
@@ -238,6 +239,18 @@ MonoBehaviour:
   shootingStateTime: 0.1
   coolOffStateTime: 0.5
   aimRotateSpeed: 10
+--- !u!114 &-3932571535976409158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506684081655419495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ce48820da4efa4783230343d899c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1883890832157547831
 MonoBehaviour:
   m_ObjectHideFlags: 0

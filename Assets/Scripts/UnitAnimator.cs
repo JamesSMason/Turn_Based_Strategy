@@ -36,7 +36,6 @@ public class UnitAnimator : MonoBehaviour
 
     private void MoveAction_OnStartMoving(object sender, EventArgs e)
     {
-        Debug.Log(unitAnimator.GetBool("IsWalking"));
         unitAnimator.SetBool("IsWalking", true);
     }
 

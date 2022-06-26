@@ -3387,6 +3387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionCameraGameObject: {fileID: 990131219}
+  characterShoulderHeight: 1.5
+  shoulderOffsetAmount: 0.5
 --- !u!1001 &2088503515
 PrefabInstance:
   m_ObjectHideFlags: 0

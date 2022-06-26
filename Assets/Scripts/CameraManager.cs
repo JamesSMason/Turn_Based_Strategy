@@ -17,13 +17,11 @@ public class CameraManager : MonoBehaviour
 
     private void ShowActionCamera()
     {
-        Debug.Log("Showing");
         actionCameraGameObject.SetActive(true);
     }
 
     private void HideActionCamera()
     {
-        Debug.Log("Hiding");
         actionCameraGameObject.SetActive(false);
     }
 
@@ -39,7 +37,7 @@ public class CameraManager : MonoBehaviour
                 Vector3 shootDirection = (targetUnit.GetWorldPosition() - shooterUnit.GetWorldPosition()).normalized;
                 Vector3 shoulderOffset = Quaternion.Euler(0, 90, 0) * shootDirection * shoulderOffsetAmount;
 
-                Vector3 actionCameraPosition = shooterUnit.GetWorldPosition() + cameraCharacterHeight + shoulderOffset + shootDirection * -1;
+                Vector3 actionCameraPosition = shooterUnit.GetWorldPosition() + cameraCharacterHeight + shoulderOffset - shootDirection;
                 actionCameraGameObject.transform.position = actionCameraPosition;
                 actionCameraGameObject.transform.LookAt(targetUnit.GetWorldPosition() + cameraCharacterHeight);
                 ShowActionCamera();

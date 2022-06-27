@@ -128,7 +128,7 @@ public class GridSystemVisual : MonoBehaviour
                 break;
         }
 
-        ShowGridPositionList(selectedAction.GetValidActionGridPosition(), gridVisualType);
+        ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);
     }
 
     private Material GetGridVisualTypeMaterial(GridVisualType gridVisualType)
@@ -140,7 +140,6 @@ public class GridSystemVisual : MonoBehaviour
                 return gridVisualTypeMaterial.material;
             }
         }
-        Debug.LogError($"Could not find the {gridVisualType} in the list.");
         return null;
     }
 

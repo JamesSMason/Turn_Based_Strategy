@@ -10,6 +10,7 @@ public class Unit : MonoBehaviour
     private GridPosition gridPosition;
     private MoveAction moveAction;
     private SpinAction spinAction;
+    private ShootAction shootAction;
     private BaseAction[] baseActionArray;
     private HealthSystem healthSystem;
 
@@ -23,6 +24,7 @@ public class Unit : MonoBehaviour
     {
         moveAction = GetComponent<MoveAction>();
         spinAction = GetComponent<SpinAction>();
+        shootAction = GetComponent<ShootAction>();
         baseActionArray = GetComponents<BaseAction>();
         healthSystem = GetComponent<HealthSystem>();
         actionPoints = MAX_ACTION_POINTS;
@@ -59,10 +61,16 @@ public class Unit : MonoBehaviour
         return spinAction;
     }
 
+    public ShootAction GetShootAction()
+    {
+        return shootAction;
+    }
+
     public GridPosition GetGridPostion()
     {
         return gridPosition;
     }
+
     public Vector3 GetWorldPosition()
     {
         return transform.position;
@@ -108,6 +116,8 @@ public class Unit : MonoBehaviour
     {
         healthSystem.Damage(damageAmount);
     }
+
+    public float GetHealthNormalized() => healthSystem.GetHealthNormalized();
 
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {

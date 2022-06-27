@@ -16,7 +16,9 @@ public class Unit : MonoBehaviour
     private int actionPoints;
 
     public static event EventHandler OnAnyActionPointsChanged;
-    
+    public static event EventHandler OnAnyUnitSpawned;
+    public static event EventHandler OnAnyUnitDead;
+
     private void Awake()
     {
         moveAction = GetComponent<MoveAction>();
@@ -33,6 +35,8 @@ public class Unit : MonoBehaviour
 
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
+
+        OnAnyUnitSpawned?.Invoke(this, EventArgs.Empty);
     }
 
     private void Update()
@@ -95,6 +99,16 @@ public class Unit : MonoBehaviour
         return actionPoints;
     }
 
+    public bool IsEnemy()
+    {
+        return isEnemy;
+    }
+
+    public void Damage(int damageAmount)
+    {
+        healthSystem.Damage(damageAmount);
+    }
+
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
         if ((IsEnemy() & !TurnSystem.Instance.IsPlayerTurn()) || (!IsEnemy() & TurnSystem.Instance.IsPlayerTurn()))
@@ -108,15 +122,6 @@ public class Unit : MonoBehaviour
     {
         LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
         Destroy(gameObject);
-    }
-
-    public bool IsEnemy()
-    {
-        return isEnemy;
-    }
-
-    public void Damage(int damageAmount)
-    {
-        healthSystem.Damage(damageAmount);
+        OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
     }
 }

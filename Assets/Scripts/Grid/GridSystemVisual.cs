@@ -31,7 +31,7 @@ public class GridSystemVisual : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.Log($"There are multiple GridSystemVisual objects in this scene.");
+            Debug.Log($"There are multiple GridSystemVisual objects in this scene. {transform} - {Instance}.");
             Destroy(gameObject);
             return;
         }

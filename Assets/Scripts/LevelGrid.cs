@@ -19,7 +19,7 @@ public class LevelGrid : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.Log($"There are multiple LevelGrid objects in this scene.");
+            Debug.Log($"There are multiple LevelGrid objects in this scene. {transform} - {Instance}.");
             Destroy(gameObject);
             return;
         }

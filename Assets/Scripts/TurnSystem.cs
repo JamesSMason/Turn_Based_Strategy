@@ -14,7 +14,7 @@ public class TurnSystem : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.Log($"There are multiple TurnSystem objects in this scene.");
+            Debug.Log($"There are multiple TurnSystem objects in this scene. {transform} - {Instance}.");
             Destroy(gameObject);
             return;
         }

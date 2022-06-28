@@ -217,4 +217,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead5b197847b15546b6e780b9f49e7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 4549213777363636026}
+  gridDebugText: {fileID: 4549213777363636026}

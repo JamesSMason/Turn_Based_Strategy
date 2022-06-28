@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LevelGrid : MonoBehaviour
 {
+    [SerializeField] private int gridWidth = 10;
+    [SerializeField] private int gridHeight = 10;
+    [SerializeField] private int gridCellSize = 2;
     [SerializeField] Transform gridObjectDebug = null;
 
     public static LevelGrid Instance { get; private set; }
@@ -23,8 +26,8 @@ public class LevelGrid : MonoBehaviour
 
         Instance = this;
 
-        gridSystem = new GridSystem<GridObject>(10, 10, 2, (GridSystem<GridObject> g, GridPosition gridPosition) => new GridObject(g, gridPosition));
-        gridSystem.CreateDebugObjects(gridObjectDebug);
+        gridSystem = new GridSystem<GridObject>(gridWidth, gridHeight, gridCellSize, (GridSystem<GridObject> g, GridPosition gridPosition) => new GridObject(g, gridPosition));
+        //gridSystem.CreateDebugObjects(gridObjectDebug);
     }
 
     public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
@@ -72,7 +75,18 @@ public class LevelGrid : MonoBehaviour
 
     public bool IsValidGridPosition(GridPosition gridPosition) => gridSystem.IsValidGridPosition(gridPosition);
 
-    public int GetWidth() => gridSystem.GetWidth();
+    public int GetGridWidth()
+    {
+        return gridWidth;
+    }
 
-    public int GetHeight() => gridSystem.GetHeight();
+    public int GetGridHeight()
+    {
+        return gridHeight;
+    }
+
+    public int GetGridCellSize()
+    {
+        return gridCellSize;
+    }
 }

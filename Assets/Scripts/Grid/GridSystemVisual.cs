@@ -44,10 +44,10 @@ public class GridSystemVisual : MonoBehaviour
         UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
 
-        gridSystemVisualSingleArray = new GridSystemVisualSingle[LevelGrid.Instance.GetWidth(), LevelGrid.Instance.GetHeight()];
-        for (int x = 0; x < LevelGrid.Instance.GetWidth(); x++)
+        gridSystemVisualSingleArray = new GridSystemVisualSingle[LevelGrid.Instance.GetGridWidth(), LevelGrid.Instance.GetGridHeight()];
+        for (int x = 0; x < LevelGrid.Instance.GetGridWidth(); x++)
         {
-            for (int z = 0; z < LevelGrid.Instance.GetHeight(); z++)
+            for (int z = 0; z < LevelGrid.Instance.GetGridHeight(); z++)
             {
                 GridPosition gridPosition = new GridPosition(x, z);
                 Transform gridSystemVisualSingeInstance = Instantiate(gridSystemVisualSinglePrefab, LevelGrid.Instance.GetWorldPosition(gridPosition), Quaternion.identity);

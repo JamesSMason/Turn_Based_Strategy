@@ -591,6 +591,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7649809d3af373249b0dbbfc0fd8040f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetShoulderHeight: 1.7
+  obstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   maxShootDistance: 7
   aimingStateTime: 1
   shootingStateTime: 0.1

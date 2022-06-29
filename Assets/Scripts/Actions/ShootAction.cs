@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ShootAction : BaseAction
 {
+    [SerializeField] private float offsetShoulderHeight = 1.7f;
+    [SerializeField] private LayerMask obstaclesLayerMask;
+
     public class OnShootEventArgs : EventArgs
     {
         public Unit targetUnit;
@@ -126,6 +129,19 @@ public class ShootAction : BaseAction
                 Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(testGridPosition);
 
                 if (targetUnit.IsEnemy() == unit.IsEnemy())
+                {
+                    continue;
+                }
+
+                Vector3 unitWorldPosition = LevelGrid.Instance.GetWorldPosition(unitGridPosition);
+                Vector3 testWorldPosition = LevelGrid.Instance.GetWorldPosition(testGridPosition);
+                Vector3 shootDirection = (testWorldPosition - unitWorldPosition).normalized;
+
+                if (Physics.Raycast(unitWorldPosition + Vector3.up * offsetShoulderHeight,
+                                        shootDirection,
+                                        Vector3.Distance(unitWorldPosition, testWorldPosition),
+                                        obstaclesLayerMask
+                                        ))
                 {
                     continue;
                 }

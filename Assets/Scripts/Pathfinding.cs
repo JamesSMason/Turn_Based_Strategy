@@ -6,6 +6,8 @@ public class Pathfinding : MonoBehaviour
     public static Pathfinding Instance { get; private set; }
 
     [SerializeField] private Transform gridDebugObjectPrefab = null;
+    [SerializeField] private float raycastOffsetDistance = 5f;
+    [SerializeField] LayerMask obstaclesLayerMask;
 
     private int width;
     private int height;
@@ -27,15 +29,30 @@ public class Pathfinding : MonoBehaviour
 
         Instance = this;
     }
-    private void Start()
+
+    public void Setup(int width, int height, int cellSize)
     {
-        gridSystem = new GridSystem<PathNode>(LevelGrid.Instance.GetGridWidth(), 
-                                                LevelGrid.Instance.GetGridHeight(), 
-                                                LevelGrid.Instance.GetGridCellSize(), 
-                                                (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
-        width = gridSystem.GetWidth();
-        height = gridSystem.GetHeight();
+        this.width = width;
+        this.height = height;
+        this.cellSize = cellSize;
+
+        gridSystem = new GridSystem<PathNode>(width, height, cellSize, (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
         gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
+
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int z = 0; z < height; z++)
+            {
+                GridPosition gridPosition = new GridPosition(x, z);
+                Vector3 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+                if (Physics.Raycast(worldPosition + Vector3.down * raycastOffsetDistance, Vector3.up, out RaycastHit hit, 20f, obstaclesLayerMask))
+                {
+                    Debug.Log(hit.transform.gameObject.name);
+                    GetNode(x, z).SetIsWalkable(false);
+                }
+            }
+        }
     }
 
     public List<GridPosition> FindPath(GridPosition startGridPosition, GridPosition endGridPosition)
@@ -80,6 +97,12 @@ public class Pathfinding : MonoBehaviour
             {
                 if (closedList.Contains(neighbourPathNode))
                 {
+                    continue;
+                }
+
+                if (!neighbourPathNode.GetIsWalkable())
+                {
+                    closedList.Add(neighbourPathNode);
                     continue;
                 }
 

@@ -565,7 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 4
   stoppingDistance: 0.1
-  rotateSpeed: 10
+  rotateSpeed: 50
   maxMoveDistance: 4
 --- !u!114 &4014046320573414097
 MonoBehaviour:

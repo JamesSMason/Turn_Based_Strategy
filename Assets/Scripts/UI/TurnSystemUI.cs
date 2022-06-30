@@ -28,13 +28,6 @@ public class TurnSystemUI : MonoBehaviour
         turnNumberText.text = $"TURN {TurnSystem.Instance.GetTurnNumber()}";
     }
 
-    private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
-    {
-        UpdateTurnText();
-        UpdateEnemyTurnVisual();
-        UpdateEndTurnButtonVisibility();
-    }
-
     private void UpdateEnemyTurnVisual()
     {
         enemyTurnVisualGameObject.SetActive(!TurnSystem.Instance.IsPlayerTurn());
@@ -43,5 +36,12 @@ public class TurnSystemUI : MonoBehaviour
     private void UpdateEndTurnButtonVisibility()
     {
         endTurnButton.gameObject.SetActive(TurnSystem.Instance.IsPlayerTurn());
+    }
+
+    private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+    {
+        UpdateTurnText();
+        UpdateEnemyTurnVisual();
+        UpdateEndTurnButtonVisibility();
     }
 }

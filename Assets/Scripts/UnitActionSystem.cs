@@ -121,7 +121,7 @@ public class UnitActionSystem : MonoBehaviour
         }
     }
 
-    private void SetSelectedUnit(Unit unit)
+    public void SetSelectedUnit(Unit unit)
     {
         selectedUnit = unit;
         SetSelectedAction(unit.GetAction<MoveAction>());

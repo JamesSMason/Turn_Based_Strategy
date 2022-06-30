@@ -33,33 +33,17 @@ public class UnitManager : MonoBehaviour
 
     private void Unit_OnAnyUnitSpawned(object sender, EventArgs e)
     {
-        Unit selectedUnit = sender as Unit;
+        Unit unit = sender as Unit;
 
-        unitList.Add(selectedUnit);
+        unitList.Add(unit);
 
-        if (selectedUnit.IsEnemy())
+        if (unit.IsEnemy())
         {
-            enemyUnitList.Add(selectedUnit);
+            enemyUnitList.Add(unit);
         }
         else
         {
-            friendlyUnitList.Add(selectedUnit);
-        }
-    }
-
-    private void Unit_OnAnyUnitDead(object sender, EventArgs e)
-    {
-        Unit selectedUnit = sender as Unit;
-
-        unitList.Remove(selectedUnit);
-
-        if (selectedUnit.IsEnemy())
-        {
-            enemyUnitList.Remove(selectedUnit);
-        }
-        else
-        {
-            friendlyUnitList.Remove(selectedUnit);
+            friendlyUnitList.Add(unit);
         }
     }
 
@@ -68,13 +52,29 @@ public class UnitManager : MonoBehaviour
         return unitList;
     }
 
+    public List<Unit> GetFriendlyUnitList()
+    {
+        return friendlyUnitList;
+    }
+
     public List<Unit> GetEnemyUnitList()
     {
         return enemyUnitList;
     }
 
-    public List<Unit> GetFriendlyUnitList()
+    private void Unit_OnAnyUnitDead(object sender, EventArgs e)
     {
-        return friendlyUnitList;
+        Unit unit = sender as Unit;
+
+        unitList.Remove(unit);
+
+        if (unit.IsEnemy())
+        {
+            enemyUnitList.Remove(unit);
+        }
+        else
+        {
+            friendlyUnitList.Remove(unit);
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
@@ -40,5 +41,10 @@ public class HealthSystem : MonoBehaviour
     private void Die()
     {
         OnDead?.Invoke(this, EventArgs.Empty);
+        List<Unit> friendlyUnitList = UnitManager.Instance.GetFriendlyUnitList();
+        if (friendlyUnitList.Count > 0)
+        {
+            UnitActionSystem.Instance.SetSelectedUnit(friendlyUnitList[0]);
+        }
     }
 }

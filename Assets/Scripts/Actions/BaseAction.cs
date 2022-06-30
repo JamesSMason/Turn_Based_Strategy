@@ -34,10 +34,10 @@ public abstract class BaseAction : MonoBehaviour
         return 1;
     }
 
-    protected void ActionStart(Action onActionComplte)
+    protected void ActionStart(Action onActionComplete)
     {
         isActive = true;
-        this.onActionComplete = onActionComplte;
+        this.onActionComplete = onActionComplete;
         OnAnyActionStarted?.Invoke(this, EventArgs.Empty);
     }
 

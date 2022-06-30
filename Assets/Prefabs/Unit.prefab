@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 6942371117857745677}
   - component: {fileID: 4014046320573414097}
   - component: {fileID: -1205020529043959415}
+  - component: {fileID: 5501892925311553781}
   - component: {fileID: -3932571535976409158}
   - component: {fileID: 1883890832157547831}
   m_Layer: 7
@@ -600,6 +601,21 @@ MonoBehaviour:
   shootingStateTime: 0.1
   coolOffStateTime: 0.5
   aimRotateSpeed: 10
+--- !u!114 &5501892925311553781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506684081655419495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308168f0d5af72a4094b096adac46f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grenadeProjectilePrefab: {fileID: 6316064402240552936, guid: 874f8bbd034be8a4391350921be8f1c3,
+    type: 3}
+  maxThrowDistance: 7
 --- !u!114 &-3932571535976409158
 MonoBehaviour:
   m_ObjectHideFlags: 0

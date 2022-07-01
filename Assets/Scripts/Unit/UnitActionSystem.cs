@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -32,6 +33,7 @@ public class UnitActionSystem : MonoBehaviour
 
     private void Start()
     {
+        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         SetSelectedUnit(selectedUnit);
     }
 
@@ -142,5 +144,29 @@ public class UnitActionSystem : MonoBehaviour
     public BaseAction GetSelectedAction()
     {
         return selectedAction;
+    }
+
+    private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+    {
+        if (!TurnSystem.Instance.IsPlayerTurn())
+        {
+            return;
+        }
+
+        if (selectedUnit != null)
+        {
+            return;
+        }
+
+        List<Unit> friendlyUnitList = UnitManager.Instance.GetFriendlyUnitList();
+        if (friendlyUnitList.Count == 0)
+        {
+            // TODO: Implement GAME OVER scene
+            Debug.Log("Your team is not responding! This can't be good.");
+        }
+        else
+        {
+            SetSelectedUnit(friendlyUnitList[0]);
+        }
     }
 }

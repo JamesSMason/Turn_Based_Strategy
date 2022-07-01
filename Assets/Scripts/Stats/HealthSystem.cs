@@ -38,13 +38,13 @@ public class HealthSystem : MonoBehaviour
         return (float) health / maxHealth;
     }
 
+    public float GetHealth()
+    {
+        return health;
+    }
+
     private void Die()
     {
         OnDead?.Invoke(this, EventArgs.Empty);
-        List<Unit> friendlyUnitList = UnitManager.Instance.GetFriendlyUnitList();
-        if (friendlyUnitList.Count > 0)
-        {
-            UnitActionSystem.Instance.SetSelectedUnit(friendlyUnitList[0]);
-        }
     }
 }

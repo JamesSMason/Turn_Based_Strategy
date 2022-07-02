@@ -155,6 +155,9 @@ public class GridSystemVisual : MonoBehaviour
             case GrenadeAction grenadeAction:
                 gridVisualType = GridVisualType.Yellow;
                 break;
+            case InteractAction interactAction:
+                gridVisualType = GridVisualType.Blue;
+                break;
         }
 
         ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);

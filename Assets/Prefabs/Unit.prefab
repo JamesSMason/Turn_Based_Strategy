@@ -630,6 +630,7 @@ GameObject:
   - component: {fileID: 5501892925311553781}
   - component: {fileID: -3932571535976409158}
   - component: {fileID: 1883890832157547831}
+  - component: {fileID: -2949186105588407559}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -808,6 +809,19 @@ MonoBehaviour:
   shootPointTransform: {fileID: 2683667033204871186}
   rifleTransform: {fileID: 5511211026607256709}
   swordTransform: {fileID: 1855030099109622033}
+--- !u!114 &-2949186105588407559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506684081655419495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b5792cba38834486542adebf0bd24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxInteractDistance: 1
 --- !u!1 &7888815103120762071
 GameObject:
   m_ObjectHideFlags: 0

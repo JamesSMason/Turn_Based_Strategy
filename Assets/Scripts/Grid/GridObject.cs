@@ -2,13 +2,13 @@ using System.Collections.Generic;
 
 public class GridObject
 {
-    private GridSystem<GridObject> gridSystem;
+    private GridSystemHex<GridObject> gridSystem;
     private GridPosition gridPosition;
     private IInteractable interactable;
 
     private List<Unit> unitList;
 
-    public GridObject(GridSystem<GridObject> gridSystem, GridPosition gridPosition)
+    public GridObject(GridSystemHex<GridObject> gridSystem, GridPosition gridPosition)
     {
         this.gridSystem = gridSystem;
         this.gridPosition = gridPosition;

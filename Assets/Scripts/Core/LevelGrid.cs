@@ -11,7 +11,7 @@ public class LevelGrid : MonoBehaviour
 
     public static LevelGrid Instance { get; private set; }
 
-    GridSystem<GridObject> gridSystem;
+    GridSystemHex<GridObject> gridSystem;
 
     public event EventHandler OnAnyUnitMovedGridPosition;
 
@@ -26,7 +26,7 @@ public class LevelGrid : MonoBehaviour
 
         Instance = this;
 
-        gridSystem = new GridSystem<GridObject>(gridWidth, gridHeight, gridCellSize, (GridSystem<GridObject> g, GridPosition gridPosition) => new GridObject(g, gridPosition));
+        gridSystem = new GridSystemHex<GridObject>(gridWidth, gridHeight, gridCellSize, (GridSystemHex<GridObject> g, GridPosition gridPosition) => new GridObject(g, gridPosition));
         //gridSystem.CreateDebugObjects(gridObjectDebug);
     }
 

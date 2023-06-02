@@ -13,7 +13,7 @@ public class Pathfinding : MonoBehaviour
     private int height;
     private int cellSize;
 
-    GridSystem<PathNode> gridSystem;
+    GridSystemHex<PathNode> gridSystem;
 
     private const int MOVE_STRAIGHT_COST = 10;
     private const int MOVE_DIAGONAL_COST = 14;
@@ -36,7 +36,7 @@ public class Pathfinding : MonoBehaviour
         this.height = height;
         this.cellSize = cellSize;
 
-        gridSystem = new GridSystem<PathNode>(width, height, cellSize, (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
+        gridSystem = new GridSystemHex<PathNode>(width, height, cellSize, (GridSystemHex<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
         //gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
 
 

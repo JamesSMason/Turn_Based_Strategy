@@ -58,6 +58,8 @@ public class GridSystemVisual : MonoBehaviour
         HideAllGridPositions();
 
         UpdateGridVisual();
+
+        ShowGrid();
     }
 
     public void HideAllGridPositions()
@@ -121,6 +123,17 @@ public class GridSystemVisual : MonoBehaviour
         foreach (GridPosition gridPosition in gridPositionList)
         {
             gridSystemVisualSingleArray[gridPosition.x, gridPosition.z].Show(GetGridVisualTypeMaterial(gridVisualType));
+        }
+    }
+
+    private void ShowGrid()
+    {
+        for (int x = 0; x < LevelGrid.Instance.GetGridWidth(); x++)
+        {
+            for (int z = 0; z < LevelGrid.Instance.GetGridHeight(); z++)
+            {
+                gridSystemVisualSingleArray[x,z].Show(GetGridVisualTypeMaterial(GridVisualType.White));
+            }
         }
     }
 
